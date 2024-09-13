@@ -35,13 +35,13 @@ public class App {
             int cols = metadata.getColumnCount();
 
             for (int i = 1; i <= cols; i++) {
-                System.out.printf("%-25s | ", metadata.getColumnName(i));
+                System.out.printf("%-30s | ", metadata.getColumnName(i));
             }
             System.out.println();
 
             while(result.next()){
                 for (int i = 1; i <= cols; i++) {
-                    System.out.printf("%-25s | ", result.getString(i));
+                    System.out.printf("%-30s | ", result.getString(i));
                 }
                 System.out.println();
             }
@@ -60,7 +60,7 @@ public class App {
             statement.setString(1, uf);
             var result = statement.executeQuery();
             if(result.next()){
-                System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
+                System.out.printf("Id: %2d Nome: %-30s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
             }
             System.out.println();
         } catch(SQLException e){
@@ -76,7 +76,7 @@ public class App {
             var statement = conn.createStatement();
             var result = statement.executeQuery("select * from estado");
             while(result.next()){
-                System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
+                System.out.printf("Id: %2d Nome: %-30s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
             }
             System.out.println();
         } catch (SQLException e) {
